@@ -16,7 +16,7 @@ spec:
         app: myweb
     spec:
       containers:
-      - image: 192.168.1.81:5000/justme/myweb:1
+      - image: 35.153.93.153:8123/dockerrepo:1
         imagePullPolicy: Always
         name: myweb
 
