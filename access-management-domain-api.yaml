@@ -2,12 +2,11 @@ apiVersion: v1
 kind: Service
 metadata:
   name: access-management
-  namespace: dev
 spec:
   type: NodePort
   ports:
   - name: access-management-api
-    nodePort: 31254
+    nodePort: 31291
     port: 8080
     targetPort: 8080
   selector:
@@ -18,7 +17,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: access-management-api
-  namespace: dev
 spec:
   replicas: 1
   selector:
@@ -31,11 +29,10 @@ spec:
     spec:
       containers:
       - name: access-management-api
-        image: 35.153.93.153:8123/dockerrepo:tagVersion
+        image: chkarunakarreddy/assignment:latest
         imagePullPolicy: Always
         env:
         - name: SPRING_PROFILES_ACTIVE
-          value: "dev"
         resources:
           requests:
             cpu: 300m
@@ -58,6 +55,6 @@ spec:
           #          timeoutSeconds: 2
           #          failureThreshold: 1
           #          successThreshold: 1
-      imagePullSecrets:
-      - name: gitlab-auth
-
+          #      imagePullSecrets:
+          #      - name: gitlab-auth
+          #
